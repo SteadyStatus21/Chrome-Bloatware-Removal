@@ -36,6 +36,7 @@ echo.
 echo Created by SteadyStatus21
 echo.
 echo.
+echo.
 echo 1 - Remove Bloatware from Chrome
 echo 2 - Add Bloatware back to Chrome
 echo.
@@ -50,6 +51,18 @@ echo.
 cls
 goto start
 :remove
+cls
+echo.
+echo.
+echo WARNING: 
+echo.
+echo WHAT YOU ARE ABOUT TO DO IS MODIFY YOUR REGISTRY TO REMOVE POLICIES. 
+echo BY PRESSING ANY KEY, YOU KNOW THAT I AM NOT RESPONSIBLE FOR ANY DAMAGE
+echo CAUSED TO YOUR SYSTEM. 
+echo.
+echo.
+pause
+cls
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist" /v 1 /t REG_SZ /d eimadpbcbfnmbkopoojfekhnkhdbieeh /f
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist" /v 2 /t REG_SZ /d eimadpbcbfnmbkopoojfekhnkhdbieeh /f
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallBlocklist" /v 1 /t REG_SZ /d 0 /f
@@ -58,7 +71,7 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" /v IncognitoModeAva
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" /v DeveloperToolsAvailability /t REG_DWORD /d 1 /f
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" /v ForceYouTubeRestrict /t REG_DWORD /d 0 /f
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" /v TaskManagerEndProcessEnabled /t REG_DWORD /d 1 /f
-timeout /t 2 /nobreak
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\RestoreOnStartupURLs" /v 1 /t REG_SZ /d 1 /f
 taskkill /f /im chrome.exe
 start chrome --profile-directory="Default"
 echo. 
@@ -67,6 +80,18 @@ echo Completed Removing - Press any key to exit.
 pause > nul
 exit
 :add
+cls
+echo.
+echo.
+echo WARNING: 
+echo.
+echo WHAT YOU ARE ABOUT TO DO IS MODIFY YOUR REGISTRY TO RE-ADD POLICIES. 
+echo BY PRESSING ANY KEY, YOU KNOW THAT I AM NOT RESPONSIBLE FOR ANY DAMAGE
+echo CAUSED TO YOUR SYSTEM. 
+echo.
+echo.
+pause
+cls
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" /v ForceYouTubeRestrict /f
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist" /v 1 /f
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist" /v 2 /f
@@ -76,7 +101,7 @@ reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" /v IncognitoMode
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" /v DeveloperToolsAvailability /f
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" /v ForceYouTubeRestrict /f
 reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome" /v TaskManagerEndProcessEnabled /f
-timeout /t 2 /nobreak
+reg delete "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\RestoreOnStartupURLs" /v 1 /t REG_SZ /d 1 /f
 taskkill /f /im chrome.exe
 start chrome --profile-directory="Default"
 echo.
