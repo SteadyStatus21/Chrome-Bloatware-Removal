@@ -48,6 +48,12 @@ The policy ```ForceYouTubeRestrict``` is set to '0' which disables the policy.
 
 The URL blocklist is modified to only block "https://www.qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq.com". (This doesn't replace the GoGuardian, iBoss, etc blockpage, only the one native to Google Chrome) The error code given to the blocked page is "ERR_BLOCKED_BY_ADMINISTRATOR". Test the URL to see if the changes were done correctly. 
 
+Correct should look like this:
+![Correct](https://raw.githubusercontent.com/SteadyStatus21/Chrome-Bloatware-Removal/main/imgs/correct.PNG)
+
+Incorrect:
+![Incorrect](https://raw.githubusercontent.com/SteadyStatus21/Chrome-Bloatware-Removal/main/imgs/incorrect.PNG)
+
 Finally, the ```ExtensionInstallBlocklist``` is set to block the extension with the ID '0' (which doesnt exist) and you can install anything else into your browser. 
 
 ### Automatic Installation
